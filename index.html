@@ -238,10 +238,12 @@
   }
 
   /* ---------- FILTERS ---------- */
-  .filters{
+  .layout{
     max-width:1180px;
     margin:0 auto;
     padding:22px 24px 0;
+  }
+  .filters{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
@@ -266,12 +268,24 @@
   .pill:hover, .pill:focus-visible{ color:var(--cream); border-color:var(--cream); outline:none; }
   .pill.active{ color:var(--bg); border-color:transparent; }
 
-  /* ---------- GRID ---------- */
-  .grid-wrap{
-    max-width:1180px;
-    margin:0 auto;
-    padding:32px 24px 0;
+  @media (min-width:900px){
+    .layout{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:36px;
+      align-items:start;
+    }
+    .filters{
+      flex-direction:column;
+      align-items:stretch;
+      position:sticky;
+      top:100px;
+    }
+    .pill{ justify-content:flex-start; border-radius:3px; }
   }
+
+  /* ---------- GRID ---------- */
+  .grid-wrap{}
   .count-line{
     font-family:'Space Mono', monospace;
     font-size:11px;
@@ -623,11 +637,13 @@
   <p>Cada artículo se describe tal cual está — sin inflar condición ni specs. Cierre de venta por WhatsApp o Instagram.</p>
 </section>
 
-<div class="filters" id="filters"></div>
+<div class="layout">
+  <div class="filters" id="filters"></div>
 
-<div class="grid-wrap">
-  <div class="count-line" id="countLine"></div>
-  <div class="grid" id="grid"></div>
+  <div class="grid-wrap">
+    <div class="count-line" id="countLine"></div>
+    <div class="grid" id="grid"></div>
+  </div>
 </div>
 
 <footer>
